@@ -79,6 +79,9 @@
                             <li class="nav-item">
                                 <a class="nav-link scrollto" href="{% url 'index' %}">PROFESIONALES</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link scrollto" href="{% url 'post_new' %}">NUEVO POST</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -135,7 +138,7 @@
                 <div class="row">
                     <!-- Blog entries-->
                     <div class="col-lg-8">
-                        <!-- Featured blog post-->
+                       <!-- Featured blog post-->
                         <div class="card mb-4">
                             <a href="#!"><img class="card-img-top" src="https://tecnohotelnews.com/wp-content/uploads/2018/04/siete-claves-para-ofrecer-platos-saludables-atractivos-a-los-comensales.jpg" alt="..." /></a>
                             <div class="card-body">
@@ -160,6 +163,22 @@
                                 </div>
                             </div>
                         </div>
+                        {% for post in posts %}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <!-- Blog post-->
+                                <div class="card mb-4">
+                                    <a href="#!"><img class="card-img-top" src='post.Imagen' alt="..." /></a>
+                                    <div class="card-body">
+                                        <div class="small text-muted">publicado: {{ post.published_date }}</div>
+                                        <h2 class="card-title h4">{{ post.Titulo }}</h2>
+                                         <p class="card-text">{{ post.Texto |linebreaksbr }}</p>
+                                        <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">LEER →</a>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                         {% endfor %}
                         <!-- Pagination-->
                         <nav aria-label="Pagination">
                             <hr class="my-0" />
@@ -224,4 +243,5 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     </div>
   </body>
-</html>
+</html>                  
+                        

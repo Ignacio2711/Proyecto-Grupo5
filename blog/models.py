@@ -17,24 +17,19 @@ class Comentario (models.Model):
     Comentario = models.CharField(max_length=255)
     mail = models.EmailField
 
-class Post(models.Model):
+class post(models.Model):
     titulo = models.CharField(max_length=100)
-    subtitulo = models.CharField(max_length=255)
-    nota = models.TextField(max_length=5000)
+    texto = models.TextField(max_length=5000)
     imagen = models.ImageField(upload_to='photos')
-    fecha = models.DateField(auto_now_add=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True)
     comentario = models.ForeignKey(Comentario, on_delete=models.SET_NULL, null=True)
     
-    created_date = models.DateTimeField(
-            default=timezone.now)
-    published_date = models.DateTimeField(
-            blank=True, null=True)
-
     def publish(self):
         self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
-        return self.title
+        return self.titulo
 

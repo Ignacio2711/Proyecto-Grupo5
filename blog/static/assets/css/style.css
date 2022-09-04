@@ -13,10 +13,10 @@ body {
   color: #444444;
 }
 
-a {
+/*a {
   color: #01b1d7;
   text-decoration: none;
-}
+}*/
 
 a:hover {
   color: #0dd3fe;
@@ -456,12 +456,14 @@ section {
   width: 32px;
   height: 32px;
   background: #c2cdcf;
+  text-decoration: none;
 }
 
 .team .member .social a i {
   color: #fff;
   font-size: 16px;
   margin: 0 2px;
+  text-decoration: none;
 }
 
 .team .member .social a:hover {
@@ -470,11 +472,26 @@ section {
 
 .team .member .social a+a {
   margin-left: 8px;
+  text-decoration: none;
 }
 
 
+/*--------------------------------------------------------------
+# Usuario
+--------------------------------------------------------------*/
+#Ingresocont {
+  background-color: #f1f3f4;
+  margin-top: 10px;
+}
 
+#contra {
+  margin-top: 10px;
+}
 
+#ingresar {
+  background-color: #fb7304;
+  margin-top: 10px;
+}
 
 
 
@@ -492,6 +509,7 @@ section {
   background: #2a3336;
   border-bottom: 1px solid #354144;
   padding: 60px 0 30px 0;
+  justify-self: right;
 }
 
 #footer .footer-top .footer-info {
@@ -624,4 +642,25 @@ section {
   text-align: center;
   font-size: 13px;
   color: #fff;
+}
+
+
+.integrantes ul  {
+  list-style: none;
+}
+
+.integrantes ul a {
+  color: #fff;
+  text-decoration: none;
+
+}
+
+.integrantes ul a:hover {
+  color: #0187a4;
+  list-style-position: inside;
+}
+
+.integrantes ul ul {
+  color: #0187a4;
+  list-style-position: inside;
 }
