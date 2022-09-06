@@ -81,7 +81,7 @@
                                 <a class="nav-link scrollto" href="{% url 'index' %}">PROFESIONALES</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link scrollto" href="{% url 'post_new' %}">NUEVO POST</a>
+                                <a class="nav-link scrollto" href="{% url 'create' %}">NUEVO POST</a>
                             </li>                            
                         </ul>
                     </div>
@@ -173,7 +173,7 @@
                                     <div class="card-body">
                                         <div class="small text-muted">publicado: {{ post.published_date }}</div>
                                         <h2 class="card-title h4">{{ post.Titulo }}</h2>
-                                         <p class="card-text">{{ post.Texto |linebreaksbr }}</p>
+                                        <p class="card-text">{{ post.Texto |linebreaksbr }}</p>
                                         <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">LEER →</a>
                                     </div>
                                 </div>
