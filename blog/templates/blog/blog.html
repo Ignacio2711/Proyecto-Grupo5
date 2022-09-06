@@ -169,12 +169,15 @@
                             <div class="col-lg-6">
                                 <!-- Blog post-->
                                 <div class="card mb-4">
-                                    <a href="#!"><img class="card-img-top" src='post.Imagen' alt="..." /></a>
                                     <div class="card-body">
-                                        <div class="small text-muted">publicado: {{ post.published_date }}</div>
-                                        <h2 class="card-title h4">{{ post.Titulo }}</h2>
-                                         <p class="card-text">{{ post.Texto |linebreaksbr }}</p>
-                                        <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">LEER →</a>
+                                        <div class="post">
+                                            <div class="date">
+                                                <div class="small text-muted">{{ post.published_date }}</div>
+                                            </div>
+                                            <h2 class="card-title h4"><a href="">{{ post.titulo }}</a></h2>
+                                            <p class="card-text">{{ post.texto |linebreaksbr }}</p>
+                                            <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">LEER →</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

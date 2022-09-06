@@ -8,8 +8,7 @@
             </div>
         {% endif %}
         <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a href="#!"><img class="card-img-top" src='post.Imagen' alt="..." /></a>
-        <h2>{{ post.Titulo }}</h2>
-        <p>{{ Post.Texto |linebreaksbr }}</p>
+        <h2>{{ post.titulo }}</h2>
+        <p>{{ Post.texto |linebreaksbr }}</p>
     </div>
 {% endblock %}

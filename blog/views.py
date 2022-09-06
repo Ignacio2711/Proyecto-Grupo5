@@ -7,6 +7,7 @@
 # El que ve pone su nombre abajo y cuando todos lo vean borramos
 #
 
+from multiprocessing import context
 from django.shortcuts import render
 from .form import PostForm
 from django.utils import timezone
@@ -19,7 +20,11 @@ def index(request):
 
 
 def blog(request):
-    return render(request,"blog/blog.html",{})
+    posts = post.objects.all()
+    context={
+        'posts':posts
+    }
+    return render(request,"blog/blog.html", context)
 
 def noticias(request):
     return render(request,"blog/noticias.html",{})
@@ -28,7 +33,6 @@ def post2(request):
     return render(request,'blog/post2.html',{})
 
 def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
 def id(request):
@@ -38,10 +42,10 @@ def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            Post = form.save(commit=False)
+            post = form.save()
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('blog')
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
@@ -51,7 +55,7 @@ def post_edit(request, pk):
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
-            Post = form.save(commit=False)
+            post = form.save(commit=False)
             post.published_date = timezone.now()
             post.save()
             return redirect('post_detail', pk=post.pk)
