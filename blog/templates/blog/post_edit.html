@@ -96,13 +96,16 @@
             <div class="row justify-content-center">
               <div id="IngresoPost" class="col-xl-4 col-md-4 col-sm-4">
                   <section class="container" >
-                    <form method="POST" class="post-form">{% csrf_token %}
+                    <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
                       <div id="crep" >
                           <h3> CREAR POST</h3>
                       </div>
                       <div class="texto" id="ingreso">
                          {{ form.as_p }}
-                         
+                        <br>
+                         <label>Imagen</label>
+                         <input type="file" name="txtimagen" id="txtimagen">
+                         <br>
                       <button id="post" type="submit" class="save btn btn-default">Crear Post</button>
                     </form>
                   </section>

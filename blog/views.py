@@ -8,6 +8,7 @@
 #
 
 
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.shortcuts import redirect
 from .form import PostForm
@@ -35,7 +36,11 @@ def post2(request):
     return render(request,'blog/post2.html',{})
 
 def post_detail(request, pk):
-    return render(request, 'blog/post_detail.html', {'post': post})
+    Post = get_object_or_404(post, pk=pk)
+    context={
+        'post':Post
+    }
+    return render(request, 'blog/post_detail.html', context)
 
 def id(request):
     return render(request,"blog/id.html",{})
@@ -45,22 +50,28 @@ def post_new(request):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save()
+            post.imagen = request.FILES.get('txtimagen')
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('blog')
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
-def post_edit(request, pk):
-    Post = get_object_or_404(post, pk=pk)
+def post_edit(request,pk):
+    P = get_object_or_404(post, pk=pk)
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, instance=P)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('post_detail', pk=post.pk)
+            loco = form.save()
+            loco.imagen = request.FILES.get('txtimagen')
+            loco.published_date = timezone.now()
+            loco.save()
+            return redirect('post_detail', pk=loco.id)
     else:
-        form = PostForm(instance=post)
+        form = PostForm(instance=P)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+
+
+

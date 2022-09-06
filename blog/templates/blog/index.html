@@ -84,9 +84,11 @@
                             <li class="nav-item">
                                 <a class="nav-link scrollto" href="#team">PROFESIONALES</a>
                             </li>
+                            {% if usuario.verific %}
                             <li class="nav-item">
                               <a class="nav-link scrollto" href="{% url 'post' %}">NUEVO POST</a>
-                            </li>                            
+                            </li>  
+                            {% endif %}                          
                         </ul>
                     </div>
                 </div>

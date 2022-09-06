@@ -1,14 +1,251 @@
-{% extends 'blog/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-    <div class="post">
-        {% if post.published_date %}
-            <div class="date">
-                {{ post.published_date }}
+{% load static %}
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Blog Post - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'cssn/styles.css' %}" rel="stylesheet" />
+
+        <!-- Favicons -->
+        <link href="{% static 'JPJp5\favicon.png' %}" rel="icon">
+        <link href="{% static 'JPJp5\liston.png' %}" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  
+      <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <!-- ======= BARRA DE REDES ======= -->
+                <div>
+                    <header>
+                        <section id="topbar" class="fixed-top d-flex align-items-center">
+                            <div class="container d-flex justify-content-center justify-content-md-between">
+                            <div class="contact-info d-flex align-items-center">
+                                <i class="bi bi-envelope d-flex align-items-center"><a href="lalcecspchaco@gmail.com">lalcecspchaco@gmail.com</a></i>
+                                <i class="bi bi-phone d-flex align-items-center ms-4"><span>+5493644105595</span></i>
+                            </div>
+                            <div class="social-links d-none d-md-flex">
+                                <!--<a href="#" class="twitter"><i class="bi bi-twitter"></i></a>-->
+                                <a href="https://l.instagram.com/?u=https%3A%2F%2Fwww.facebook.com%2FLALCECHACO%2F&e=ATPj6mQPpt4S2V3kZEH_Qo2AjTWyKBYQUlK1wZPvHA0uS0qaxAhA6gzFEtF8x5adJerqWP7W2WhNYgu3&s=1" class="facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="https://l.facebook.com/l.php?u=http%3A%2F%2Finstagram.com%2Flalcecspchaco%3Ffbclid%3DIwAR23xECAH5hX5gUXXHR-68HimkAsrC4O67OHxj0UGEFLadKOSSssT1484Ws&h=AT2aEnFT8JAuG76VOSuZewK88AeoHCVoVRljIEMP1P6TlbmIDnHqErZywxYXl15cyFyf2paxNw5RjDnWUE3NV1F-M0tW97cDuPTb06zScz8t8NnqGu_YHuXzGzF0tLk2kktmaw" class="instagram"><i class="bi bi-instagram"></i></a>
+                                <a class="nav-link scrollto" href="{% url 'id' %}">INGRESAR</a>
+                                <!--<a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>-->
+                            </div>
+                            </div>
+                        </section>
+                    </header>
+                </div>
+          
+             
+                <!-- ======= LOGO CABEZERA ======= -->
+                <section id="cabeza" class="container-fluid">
+                    <div> 
+                        <center><img  src="{% static 'JPJp5\LALCEC-02.png' %}" alt="logo lalcec" title="logocabecera" width="30%"  id="logo" /></center>
+                    </div>
+                </section>
+        
+                <!-- ======= NAVBAR ======= -->
+                <div>
+                    <nav id="barra" class="navbar navbar-expand-lg bg-light">
+                        <div class="container-fluid">
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="{% url 'index' %}">HOME</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="{% url 'index' %}">CAMPAÑAS</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="{% url 'blog' %}">BLOG</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="{% url 'index' %}">PROFECIONALES</a>
+                                    </li>
+                                    {% if usuario.verific %}
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="{% url 'post' %}">NUEVO POST</a>
+                                    </li> 
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="{% url 'post_edit' post.id %}">EDITAR</a>
+                                    </li>
+                                    {% endif %}                              
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
             </div>
-        {% endif %}
-        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <h2>{{ post.titulo }}</h2>
-        <p>{{ Post.texto |linebreaksbr }}</p>
-    </div>
-{% endblock %}
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <div class="post">
+                                
+                                <td class="mb-4"><img class="img-fluid rounded" src="{{post.imagen.url}}" alt="..." /></td>
+                                
+                                {% if post.published_date %}
+                                    <div class="date">
+                                        
+                                        {{ post.published_date }}
+                                        
+                                    </div>
+                                {% endif %}
+                                
+                                <h1 class="fw-bolder mb-1">{{ post.titulo }}</h1>
+                                <p class="fs-5 mb-4">{{ post.texto|linebreaksbr }}</p>
+                            </div>
+                    </article>
+                    
+                <!-- Side widgets
+                <div class="col-lg-4">-->
+                    <!-- Search widget
+                    <div class="card mb-4">
+                        <div class="card-header">Search</div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!-- Categories widget
+                    <div class="card mb-4">
+                        <div class="card-header">Categories</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="#!">Web Design</a></li>
+                                        <li><a href="#!">HTML</a></li>
+                                        <li><a href="#!">Freebies</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="#!">JavaScript</a></li>
+                                        <li><a href="#!">CSS</a></li>
+                                        <li><a href="#!">Tutorials</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- Side widget
+                    <div class="card mb-4">
+                        <div class="card-header">Side Widget</div>
+                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <section class="footer" id="left">
+            <footer id="footer">
+              <div class="footer-top">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-1"></div>
+                  
+                   <div class="col-3">
+                      <div class="footer-info">
+                      <img src="https://scontent.fres2-1.fna.fbcdn.net/v/t1.6435-9/86638850_1223988254464495_571770699555799040_n.png?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=7R8db_0l7V8AX_yD-RA&_nc_ht=scontent.fres2-1.fna&oh=00_AT_SD_H9gjJkm95crpGbfOU0aLqWSAwb7EfkfyVpZwBwKA&oe=632D7E3C" alt="informatorio logo" width="20%">
+                      <h3>INFORMATORIO</h3>
+                      <p>Arturo Ilia 1055, Resistencia, Chaco </p>
+                      <div class="social-links mt-3">
+                        <!--<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>-->
+                        <a href="#" class="https://www.facebook.com/informatorio"><i class="bx bxl-facebook"></i></a>
+                        <a href="https://instagram.com/informatorio?igshid=YmMyMTA2M2Y=" class="instagram"><i class="bx bxl-instagram"></i></a>
+                        <!--<a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>-->
+                        <!--<a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="col-4">
+                    <div class="integrantes">
+                        <h4 class="titulo">INTEGRANTES</h4>
+                        <div class="links">
+                            <ul>
+                              <li><a href="marceloutnfrr@hotmail.com" >Gonzalez Walter Marcelo (Dev)</a>
+                                  <ul>
+                                      <li>marceloutnfrr@hotmail.com</li>
+                                  </ul></li>
+                              <li><a href="https://www.linkedin.com/in/olga-vanesa-ferreyra/" >Ferreyra Olga Vanesa (Dev) </a>
+                                  <ul>
+                                      <li>vof.88.dg@gmail.com</li>
+                                  </ul></li>
+                              <li><a href="http://www.linkedin.com/in/agustin-ojeda-b670a229/" >Ojeda Agustin (Dev)</a>
+                                  <ul>
+                                      <li>oagusj@gmail.com</li>
+                                  </ul></li>
+                              <li><a href="igna_xd@hotmail.com.ar" >Piccoli Ignacio (Dev)</a>
+                                  <ul>
+                                      <li>igna_xd@hotmail.com.ar</li>
+                                  </ul></li>
+                              <li><a href="https://www.linkedin.com/in/carolina-huell-b9a36b22a/" >Huell Maria Carolina (Dev) </a>
+                                  <ul>
+                                      <li>caro08serfaty@gmail.com</li>
+                                  </ul></li>
+                              <li><a href="lssbor@gmail.com" >Roberto Salas (Dev) </a>
+                                  <ul>
+                                      <li>lssbor@gmail.com</li>
+                                  </ul></li>
+                              <li><a href="depedrojulianismael@gmail.com" >Julian Codina (Dev) </a>
+                                  <ul>
+                                      <li>depedrojulianismael@gmail.com</li>
+                                  </ul></li>
+                            </ul>
+                        </div>
+                    </div>
+                  </div>
+      
+                  <div class="col-3">
+                    <div class="integrantes">
+                      <h4 class="titulo">AGRADECIMIENTOS</h4>
+                      <div class="links">
+                          <ul>
+                            <li><a href="" >Ojeda Maria Jose (Profesora)</a>
+                                
+                            <li><a href="" >Campo Juan Ignacio (Mentor)</a>
+                                
+                            <li><a href="" >Sobol Zoe (Mentor)</a>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                
+            </section>
+      
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="jsn/scripts.js"></script>
+    </body>
+</html>

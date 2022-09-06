@@ -80,9 +80,11 @@
                             <li class="nav-item">
                                 <a class="nav-link scrollto" href="{% url 'index' %}">PROFESIONALES</a>
                             </li>
+                            {% if usuario.verific %}
                             <li class="nav-item">
-                                <a class="nav-link scrollto" href="{% url 'post' %}">NUEVO POST</a>
-                            </li>                            
+                              <a class="nav-link scrollto" href="{% url 'post' %}">NUEVO POST</a>
+                            </li>  
+                            {% endif %}                               
                         </ul>
                     </div>
                 </div>
@@ -171,12 +173,13 @@
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <div class="post">
+                                            <td class="mb-4"><img class="img-fluid rounded" src="{{post.imagen.url}}" alt="..." /></td>
                                             <div class="date">
                                                 <div class="small text-muted">{{ post.published_date }}</div>
                                             </div>
                                             <h2 class="card-title h4"><a href="">{{ post.titulo }}</a></h2>
                                             <p class="card-text">{{ post.texto |linebreaksbr }}</p>
-                                            <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">LEER →</a>
+                                            <a class="btn btn-primary" href="{% url 'post_detail' post.id %}">LEER →</a>
                                         </div>
                                     </div>
                                 </div>
