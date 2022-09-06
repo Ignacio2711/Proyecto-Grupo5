@@ -1,8 +1,7 @@
 
-from pyexpat import model
+
 from django.db import models
 from django.utils import timezone
-import uuid
 
 # Create your models here.
 class Categoria (models.Model):
